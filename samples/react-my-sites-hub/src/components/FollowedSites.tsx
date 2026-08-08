@@ -21,9 +21,12 @@ import { IFollowedSites } from "../models/IFollowedSites"
 import { useEffect, useState } from "react"
 import { StarFilled } from "@fluentui/react-icons"
 import { SiteListShimmer } from "./Shimmer"
+import { StaggerItem } from "./StaggerItem"
+import { useListItemStyles } from "./useListItemStyles"
 
 export const FollowedSites = () => {
   const context = React.useContext(AppContext) as BaseComponentContext
+  const styles = useListItemStyles()
 
   const [followedSites, setFollowedSites] = useState<IFollowedSites[]>([])
   const [siteImages, setSiteImages] = useState<Record<string, string>>({})
@@ -129,42 +132,44 @@ export const FollowedSites = () => {
   return (
     <List navigationMode='items'>
       {followedSites.map((site: IFollowedSites, index) => (
-        <>
-          <ListItem
-            key={site.id}
-            value={site.title}
-            data-value={site.title}
-            aria-label={site.title}
-            style={{
-              paddingBottom: "1rem",
-              display: "flex",
-              gap: "10px",
-              alignItems: "center",
-            }}
-          >
-            {renderSiteImage(site)}
-            <Link
-              href={site.webUrl}
-              target='_blank'
-              style={{ textDecoration: "none", color: "inherit" }}
+        <React.Fragment key={site.id}>
+          <StaggerItem index={index}>
+            <ListItem
+              value={site.title}
+              data-value={site.title}
+              aria-label={site.title}
+              className={styles.row}
+              style={{
+                paddingBottom: "1rem",
+                display: "flex",
+                gap: "10px",
+                alignItems: "center",
+              }}
             >
-              <Text size={400}>{site.title}</Text>
-            </Link>
-            <div style={{ marginLeft: "auto" }}>
-              <Tooltip content='Stop following' relationship='label' withArrow>
-                <Button
-                  appearance='transparent'
-                  icon={<StarFilled />}
-                  size='large'
-                  onClick={() => handleUnfollow(site)}
-                />
-              </Tooltip>
-            </div>
-          </ListItem>
+              {renderSiteImage(site)}
+              <Link
+                href={site.webUrl}
+                target='_blank'
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Text size={400}>{site.title}</Text>
+              </Link>
+              <div style={{ marginLeft: "auto" }}>
+                <Tooltip content='Stop following' relationship='label' withArrow>
+                  <Button
+                    appearance='transparent'
+                    icon={<StarFilled />}
+                    size='large'
+                    onClick={() => handleUnfollow(site)}
+                  />
+                </Tooltip>
+              </div>
+            </ListItem>
+          </StaggerItem>
           {index < followedSites.length - 1 && (
             <Divider style={{ paddingBottom: "1rem" }} />
           )}
-        </>
+        </React.Fragment>
       ))}
     </List>
   )

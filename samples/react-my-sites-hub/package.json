@@ -15,6 +15,7 @@
     "@fluentui/react-components": "^9.72.3",
     "@fluentui/react-icons": "^2.0.312",
     "@fluentui/react-migration-v8-v9": "^9.9.12",
+    "@fluentui/react-motion-components-preview": "^0.11.1",
     "@microsoft/decorators": "1.21.1",
     "@microsoft/sp-application-base": "1.21.1",
     "@microsoft/sp-component-base": "^1.21.1",

@@ -1,9 +1,25 @@
 // Constants.ts
 import {
+  bundleIcon,
+  GlobeStarFilled,
   GlobeStarRegular,
+  ClockFilled,
   ClockRegular,
-  // DocumentOnePageSparkleRegular,
+  DocumentFilled,
+  DocumentRegular,
+  ListBarFilled,
+  ListBarRegular,
 } from "@fluentui/react-icons"
+
+// Bundled icons render the filled glyph when their `filled` prop is set (used
+// for the active tab) and the regular glyph otherwise.
+const FollowedIcon = bundleIcon(GlobeStarFilled, GlobeStarRegular)
+const FrequentIcon = bundleIcon(ClockFilled, ClockRegular)
+const RecentDocumentsIcon = bundleIcon(DocumentFilled, DocumentRegular)
+const FavoriteListsIcon = bundleIcon(
+  ListBarFilled,
+  ListBarRegular
+)
 
 export const DrawerTitles = {
   mySitesPanel: "My Sites Hub",
@@ -21,7 +37,16 @@ export const Tooltips = {
 }
 
 export const Tabs = [
-  { key: "followed", label: "Followed", icon: GlobeStarRegular },
-  { key: "frequent", label: "Frequent", icon: ClockRegular },
-  // { key: "custom", label: "Custom", icon: DocumentOnePageSparkleRegular },
+  { key: "followed", label: "Followed", icon: FollowedIcon },
+  { key: "frequent", label: "Frequent", icon: FrequentIcon },
+  {
+    key: "recentDocuments",
+    label: "Recent Documents",
+    icon: RecentDocumentsIcon,
+  },
+  {
+    key: "favoriteLists",
+    label: "Favorite Lists",
+    icon: FavoriteListsIcon,
+  },
 ]

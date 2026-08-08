@@ -38,6 +38,12 @@
           ]
         }
       }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
     ]
   },
   "paths": {
