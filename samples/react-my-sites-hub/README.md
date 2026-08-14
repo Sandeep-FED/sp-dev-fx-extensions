@@ -53,6 +53,7 @@ No special setup required — the extension works across any SharePoint Online e
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | October 30, 2025   | Initial release  |
+| 1.1     | August 14, 2026   | Added new tabs for recent documents & favorite lists  |
 
 ## Minimal Path to Awesome
 
